@@ -1,0 +1,9 @@
+/logs/
+/plugins/
+__pycache__/
+.local.env
+vector_db/
+logs/
+plugins/
+config/
+stock_data.csv

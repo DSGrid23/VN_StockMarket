@@ -1,0 +1,77 @@
+
+.stSidebar > div:first-child {
+  overflow: visible !important;
+  z-index: 1; /* Đảm bảo tooltip được hiển thị trên các thành phần khác */
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px; 
+  max-width: 500px; 
+  background-color: #F9E8D9;
+  color: #104a42;
+  text-align: left;
+  padding: 10px; 
+  border-radius: 6px; 
+
+  position: absolute;
+  z-index: 9999;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%); 
+  opacity: 0;
+  transition: opacity 0.3s;
+  word-wrap: break-word; 
+  white-space: normal; 
+  line-height: 1.5; 
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.tooltip-right .tooltiptext {
+  top: 100%; 
+  left: 100%; 
+  transform: translateY(-50%) translateX(10px); 
+  text-align: left;
+  z-index: 9999;
+}
+
+.tooltip-fullwidth {
+  display: block; /* Đảm bảo link hoặc container chiếm toàn bộ chiều rộng */
+  width: 100%;
+}
+
+.sidebar-link {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background-color: #212224;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.scrollable-container {
+    height: 500px;  /* Adjust height as needed */
+    overflow-y: auto;
+    padding-right: 10px;
+} 
+
+.header_style {
+  font-size: 50px; /* Adjust font size */
+  color: #384B70; /* Set the text color */
+  text-transform: uppercase; /* Make text uppercase */
+  font-weight: bold; /* Make the text bold */
+  letter-spacing: 2px; /* Add letter spacing */
+  text-shadow: 2px 2px 5px #FCFAEE; /* Add a subtle text shadow */
+}

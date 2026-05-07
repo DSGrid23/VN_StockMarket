@@ -1,0 +1,74 @@
+/* Stock_App.css */
+
+/* General page styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Custom styling for headers */
+h1, h2 {
+    color: #384B70;
+    font-weight: 600;
+}
+
+/* Styling for main title */
+.stMarkdown h1.title {
+    color: #4c8c8f;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #4c8c8f;
+}
+.intro-text{
+    color : #971047;
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.news-summary {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #F4F6F7;
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+}
+/* Tạo kiểu cho các bài báo */
+.article-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #F4F6F7;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .article-title {
+
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #E74C3C; /* Màu đỏ cho tiêu đề */
+    text-decoration: none; /* Loại bỏ gạch chân mặc định của liên kết */
+  }
+  
+  .article-link {
+    color: inherit; /* Kế thừa màu sắc của tiêu đề */
+    text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+  }
+  
+  .article-link:hover .article-title {
+    text-decoration: underline; /* Thêm gạch chân khi hover */
+  }
+  
+
+/* Animation for success messages */
+.stSuccess {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
