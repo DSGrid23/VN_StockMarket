@@ -33,9 +33,11 @@ from tensorflow.keras.optimizers import Adam
 
 WINDOW_SIZE = 40
 
-MODEL_DIR = "models"
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
+)
 
-os.makedirs(MODEL_DIR, exist_ok=True)
+MODEL_DIR = BASE_DIR
 
 MODEL_PATH = os.path.join(
     MODEL_DIR,
