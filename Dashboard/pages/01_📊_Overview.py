@@ -377,6 +377,7 @@ with col_2:
         )
 
     grid_options = gb.build()
+    grid_options["domLayout"] = "normal"
     grid_options["rowHeight"] = 40  # Chiều cao mỗi dòng
 
     grid_response = AgGrid(
