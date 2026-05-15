@@ -1,7 +1,6 @@
 import os
 import json
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
