@@ -151,6 +151,6 @@ else:
         "Metadata not found. Training new model..."
     )
 
-    train_shared_model(
-        stock_data
-    )
+    #train_shared_model(
+    #    stock_data
+    #)
