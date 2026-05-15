@@ -1,5 +1,4 @@
 # Ứng dụng phân tích chỉ số chứng Khoán Vietstock
-Ứng dụng phân tích dữ liệu thông minh
 
 ## 1. Giới thiệu 
 - Ứng dụng phân tích chỉ số chứng khoán Vietstock là ứng dụng giúp người dùng có thể phân tích dữ liệu chứng khoán một cách nhanh chóng và hiệu quả. Ứng dụng sử dụng dữ liệu từ trang web [Vietstock](https://finance.vietstock.vn/ket-qua-giao-dich?tab=thong-ke-gia).
@@ -8,8 +7,7 @@
 - Airflow: Lập lịch thu thập các chỉ số chứng khoáng hằng ngày
 - Streamlit: Hiển thị dữ liệu chứng khoán và phân tích dữ liệu
 - Docker: Containerize ứng dụng
-- RAG (Retrieval-Augmented Generation): Mô hình chatbot trả lời câu hỏi về dữ liệu chứng khoán
-
+- 
 ## 2. Cài đặt
 ### 2.1. Cài đặt môi trường Airflow 
 - Đọc file hướng dẫn trong `dags/README.md`
@@ -44,7 +42,3 @@ Trang này cung cấp thông tin về các biến động chi tiết của một
 Và các phân tích về tình hình cụ thể của mã cổ phiếu và các bài báo liên quan.
 <img src="Images/detail_page_3.png" alt="Chi tiết 3" width="500">
 
-#### 3.4 Chatbot
-Trang cuối cùng là 1 chat bot hỏi đáp hỗ trợ người dùng một số thông tin về tình hình thị trường, dựa trên kết quả truy vấn từ dữ liệu bài báo thu thập được.
-
-<img src="Images/chatbot_page.png" alt="Chatbot" width="500">
