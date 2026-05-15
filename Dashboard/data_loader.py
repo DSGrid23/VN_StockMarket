@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # PostgreSQL connection string
-conn_str = os.getenv('DATABASE_RENDER')
+conn_str = "postgresql://vietstock_db_user:ucuQzvLk2ISHZHeIK6rENuPwhfXnDOdv@dpg-d7u18n1j2pic739dhrig-a.oregon-postgres.render.com/vietstock_db"
 
 # Default columns for stock_data
 stock_data_necessary_columns = [

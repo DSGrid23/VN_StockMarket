@@ -30,11 +30,9 @@ def update_table_from_csv(table_name, csv_file, engine):
     except Exception as e:
         logging.error(f"Error updating table {table_name} with data from {csv_file}: {e}")
 
-# csv_files = ["stock_data.csv", "stock_index.csv", "stock_info.csv", "article.csv", "financial_metrics.csv"]
-# table_names = ["stock_data", "stock_index", "stock_info", "article", "financial_metrics"] 
+csv_files = ["stock_data.csv", "stock_index.csv", "stock_info.csv", "article.csv", "financial_metrics.csv"]
+table_names = ["stock_data", "stock_index", "stock_info", "article", "financial_metrics"] 
 
-csv_files = ["financial_metrics_1.csv"]
-table_names = ["financial_metrics"]
 
 for csv_file, table_name in zip(csv_files, table_names):
     logging.info(f"Starting update for table {table_name} from file {csv_file}.")

@@ -11,9 +11,19 @@ from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
 from data_loader import load_all_tables
 from datetime import datetime, date, timedelta
 from dotenv import load_dotenv
+from models.lstm_model import train_shared_model, predict_stock
 load_dotenv()
 background_color = "#F5F5F5"
+
 conn_str = os.getenv('DATABASE_RENDER')
+if "data_frames" not in st.session_state:
+    st.session_state["data_frames"] = load_all_tables()
+    
+
+data_frames = st.session_state["data_frames"]
+stock_data = data_frames.get("stock_data", pd.DataFrame())
+
+
 
 def setup_page():
     st.set_page_config(
@@ -205,11 +215,10 @@ with chart_col:
 
     market_overview_fig.update_layout(
         margin=dict(t=0, l=20, r=20, b=20),
-        font=dict(size=10, weight="bold"),
+        font=dict(size=10),
 
         # plot_bgcolor=background_color,
         paper_bgcolor=background_color,
-
     )
     updated_labels = ['<b>' + label + '</b>' for label in market_overview_fig.data[0].labels]
 
@@ -232,7 +241,7 @@ with chart_col:
 
 
     market_overview_fig.data[0].texttemplate = "%{label}<br><b>%{customdata[1]:.2f}%</b>"
-    market_overview_fig.data[0].textfont = dict(size=15, weight="bold", color="black")  # Change color to black
+    market_overview_fig.data[0].textfont = dict(size=15, color="black")  # Change color to black
     market_overview_fig.data[0].textposition = "middle center"
 
 

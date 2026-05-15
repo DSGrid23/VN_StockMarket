@@ -16,10 +16,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-conn_str = 'postgresql://stock_data_i36c_user:YLMLHhfjF7oIdi3SMzexVaobFuaL37Dc@dpg-csro9ppu0jms73e1epb0-a.singapore-postgres.render.com/stock_data_i36c'
+conn_str = 'postgresql://vietstock_db_user:ucuQzvLk2ISHZHeIK6rENuPwhfXnDOdv@dpg-d7u18n1j2pic739dhrig-a.oregon-postgres.render.com/vietstock_db'
 
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
 }
 
@@ -101,7 +101,7 @@ def insert_data_to_db(data, engine):
     if not data:
         return
     
-    with engine.connect() as connection:
+    with engine.begin() as connection:
         insert_query = text("""
             INSERT INTO financial_metrics (stock_code, date, foreign_buy, percent_foreign_ownership, cash_dividend, dividend_yield, beta, eps, pe, forward_pe, bvps, pb)
             VALUES (:stock_code, :date, :foreign_buy, :percent_foreign_ownership, :cash_dividend, :dividend_yield, :beta, :eps, :pe, :forward_pe, :bvps, :pb)
@@ -134,40 +134,40 @@ def fetch_and_insert_stock_data():
                 except Exception as e:
                     logging.error(f"Error processing stock code {stock_code}: {e}")
 
-# fetch_and_insert_stock_data()
-def fetch_and_save_stock_data_to_csv(output_file="stock_data.csv"):
-    scraper = cloudscraper.create_scraper()
-    engine = create_engine(conn_str)
+fetch_and_insert_stock_data()
+# def fetch_and_save_stock_data_to_csv(output_file="stock_data.csv"):
+#     scraper = cloudscraper.create_scraper()
+#     engine = create_engine(conn_str)
 
-    with engine.connect() as connection:
-        query = text("SELECT code, url FROM stock_info")
-        result = connection.execute(query)
-        result = Result.mappings(result)
+#     with engine.connect() as connection:
+#         query = text("SELECT code, url FROM stock_info")
+#         result = connection.execute(query)
+#         result = Result.mappings(result)
 
-        # Tạo danh sách để lưu trữ dữ liệu
-        all_data = []
+#         # Tạo danh sách để lưu trữ dữ liệu
+#         all_data = []
 
-        with ThreadPoolExecutor(max_workers=5) as executor:  # Adjust `max_workers` as needed
-            futures = {executor.submit(fetch_stock_data, row['code'], row['url']): row['code'] for row in result}
-            for future in as_completed(futures):
-                stock_code = futures[future]
-                try:
-                    data = future.result()
-                    # Kiểm tra xem có `date` không, nếu không thì loại bỏ
-                    if data and data.get('date'):
-                        all_data.append(data)
-                    else:
-                        logging.warning(f"No valid date for stock code {stock_code}. Data skipped.")
-                except Exception as e:
-                    logging.error(f"Error processing stock code {stock_code}: {e}")
+#         with ThreadPoolExecutor(max_workers=5) as executor:  # Adjust `max_workers` as needed
+#             futures = {executor.submit(fetch_stock_data, row['code'], row['url']): row['code'] for row in result}
+#             for future in as_completed(futures):
+#                 stock_code = futures[future]
+#                 try:
+#                     data = future.result()
+#                     # Kiểm tra xem có `date` không, nếu không thì loại bỏ
+#                     if data and data.get('date'):
+#                         all_data.append(data)
+#                     else:
+#                         logging.warning(f"No valid date for stock code {stock_code}. Data skipped.")
+#                 except Exception as e:
+#                     logging.error(f"Error processing stock code {stock_code}: {e}")
 
-        # Chuyển dữ liệu thành DataFrame và lưu vào CSV
-        if all_data:
-            df = pd.DataFrame(all_data)
-            df.to_csv(output_file, index=False, encoding='utf-8-sig')
-            logging.info(f"Data saved to {output_file}.")
-        else:
-            logging.warning("No data fetched to save.")
+#         # Chuyển dữ liệu thành DataFrame và lưu vào CSV
+#         if all_data:
+#             df = pd.DataFrame(all_data)
+#             df.to_csv(output_file, index=False, encoding='utf-8-sig')
+#             logging.info(f"Data saved to {output_file}.")
+#         else:
+#             logging.warning("No data fetched to save.")
 
-# Gọi hàm
-fetch_and_save_stock_data_to_csv("financial_metrics_1.csv")
+# # Gọi hàm
+# fetch_and_save_stock_data_to_csv("financial_metrics_1.csv")
