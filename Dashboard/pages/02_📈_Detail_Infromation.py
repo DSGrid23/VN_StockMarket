@@ -20,7 +20,6 @@ import warnings
 import requests
 from bs4 import BeautifulSoup
 from data_loader import load_all_tables
-from models.chroma_loader import load_existing_chroma_db
 from models.lstm_model import predict_stock
 #from models.rag_retriever_handler_dashboard import generate_answer
 
