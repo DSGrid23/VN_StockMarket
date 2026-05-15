@@ -12,7 +12,7 @@ import os
 from sqlalchemy import create_engine
 from models.lstm_model import train_shared_model, predict_stock
     
-
+load_dotenv()
 conn_str = os.getenv('DATABASE_RENDER')
 
 
