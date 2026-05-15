@@ -385,7 +385,8 @@ with col_2:
         gridOptions=grid_options,
         height=500,
         update_mode=GridUpdateMode.SELECTION_CHANGED,
-        theme="streamlit",  # Choose from: "streamlit", "light", "dark", "blue", "fresh", "material"
+        theme="streamlit",  # Choose from: "streamlit", "light", "dark", "blue", "fresh", "material",
+        fit_columns_on_grid_load=False
     )
 
     if grid_response.get("selected_rows") is not None and not grid_response["selected_rows"].empty:
